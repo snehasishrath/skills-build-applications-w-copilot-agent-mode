@@ -1,4 +1,5 @@
-from djongo import models
+from django.db import models
+from djongo.models.fields import ArrayField
 
 class User(models.Model):
     email = models.EmailField(unique=True)
@@ -10,7 +11,7 @@ class User(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
-    members = models.ArrayField(model_container=User)
+    members = ArrayField(model_container=User)
 
     def __str__(self):
         return self.name
